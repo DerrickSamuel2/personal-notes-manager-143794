@@ -7,11 +7,7 @@ import "./App.css";
  * Supports: create, edit, delete, list, and search notes.
  * Easily extendable for backend/API CRUD integration.
  */
-const DEFAULT_COLORS = {
-  primary: "#1976d2",
-  secondary: "#424242",
-  accent: "#ffeb3b",
-};
+/* Monochrome theme: all color is global, defined via CSS variables */
 
 /**
  * Note shape:
@@ -108,14 +104,7 @@ function App() {
   }, []); // eslint-disable-line
 
   return (
-    <div
-      className="notes-app-root"
-      style={{
-        "--color-primary": DEFAULT_COLORS.primary,
-        "--color-secondary": DEFAULT_COLORS.secondary,
-        "--color-accent": DEFAULT_COLORS.accent,
-      }}
-    >
+    <div className="notes-app-root">
       <Header />
       <div className="notes-app-main-area">
         <Sidebar
