@@ -1,12 +1,13 @@
 :root {
-  --color-primary: #1976d2;
-  --color-secondary: #424242;
-  --color-accent: #ffeb3b;
-  --bg-main: #f7f9fc;
-  --bg-sidebar: #fff;
-  --bg-header: #f9fafb;
-  --text-main: #232324;
-  --border-main: #ececec;
+  --color-primary: #111;         /* use black for primary */
+  --color-secondary: #555;       /* dark gray for secondary */
+  --color-accent: #fff;          /* accent is white, could be used as highlight */
+  --bg-main: #ffffff;            /* page background pure white */
+  --bg-sidebar: #f7f7f7;         /* sidebar very light gray */
+  --bg-header: #111111;          /* header background black */
+  --text-main: #111111;          /* default text color black */
+  --text-secondary: #444;        /* secondary text - dark gray */
+  --border-main: #d1d1d1;        /* light gray for dividers */
 }
 
 .notes-app-root {
@@ -20,12 +21,12 @@
 
 .notes-header {
   background: var(--bg-header);
-  color: var(--color-primary);
-  border-bottom: 1px solid var(--border-main);
+  color: #fff;
+  border-bottom: 1.5px solid var(--border-main);
   padding: 0.8rem 1.5rem;
   font-weight: bold;
   font-size: 1.7rem;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+  box-shadow: none;
   letter-spacing: 0.5px;
 }
 
@@ -61,7 +62,7 @@
   border-radius: 20px;
   font-size: 1rem;
   padding: 7px 12px;
-  background: #fcfcfd;
+  background: #fff;
   color: var(--text-main);
   outline: none;
   margin-right: 0.5rem;
@@ -69,27 +70,30 @@
 }
 
 .sidebar-search:focus {
-  border: 1.5px solid var(--color-primary);
+  border: 1.5px solid #111;
+  background: #f2f2f2;
 }
 
 .sidebar-new-btn {
-  background: var(--color-accent);
-  color: #222;
+  background: #fff;
+  color: #111;
   font-size: 1.4rem;
-  border: none;
+  border: 1.5px solid var(--border-main);
   border-radius: 50%;
   width: 2rem; height: 2rem;
   cursor: pointer;
   font-weight: 600;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.09);
-  transition: background 0.2s;
+  box-shadow: none;
+  transition: background 0.2s, color 0.2s, border 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
   line-height: 1.1;
 }
-.sidebar-new-btn:hover {
-  background: #ffe135;
+.sidebar-new-btn:hover, .sidebar-new-btn:focus {
+  background: #111;
+  color: #fff;
+  border-color: #111;
 }
 
 .notes-list {
@@ -107,14 +111,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: background 0.15s;
+  transition: background 0.18s, color 0.18s;
   font-size: 1.07rem;
   outline: none;
+  color: var(--text-main);
 }
 .notes-list-item.selected,
 .notes-list-item:focus, .notes-list-item:hover {
-  background: var(--color-accent);
-  color: #222;
+  background: #111;
+  color: #fff;
 }
 .notes-list-title {
   text-overflow: ellipsis;
@@ -128,11 +133,12 @@
   display: flex;
   align-items: center;
 }
+
 .delete-btn {
   background: none;
   border: none;
-  color: var(--color-secondary);
-  font-size: 1.1rem;
+  color: #888; /* dimmed gray */
+  font-size: 1.12rem;
   cursor: pointer;
   margin-left: 0.3em;
   border-radius: 50%;
@@ -141,11 +147,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background .15s;
+  transition: background .15s, color .18s;
 }
 .delete-btn:hover,
 .delete-btn:focus {
-  background: #f6cfcf;
+  background: #dedede;
   color: #c63535;
   outline: none;
 }
@@ -170,7 +176,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ccc;
+  color: #bbb;
   font-size: 1.17rem;
 }
 .main-editor-form {
@@ -182,15 +188,15 @@
   font-size: 2rem;
   font-weight: 600;
   border: none;
-  border-bottom: 2px solid var(--color-primary);
+  border-bottom: 2px solid #111;
   background: transparent;
   color: var(--text-main);
   padding: 0.1em 0.2em 0.1em 0;
   outline: none;
 }
 .main-editor-title:focus {
-  border-bottom: 2px solid var(--color-accent);
-  background: #fffde7;
+  border-bottom: 2px solid #555;
+  background: #fafafa;
 }
 .main-editor-content {
   font-size: 1.11rem;
@@ -199,13 +205,13 @@
   border-radius: 6px;
   padding: 0.9em 1em;
   color: var(--text-main);
-  background: #fdfdfd;
+  background: #fff;
   resize: vertical;
   font-family: inherit;
 }
 .main-editor-content:focus {
-  border: 1.5px solid var(--color-primary);
-  background: #fffde7;
+  border: 1.5px solid #444;
+  background: #f5f5f5;
   outline: none;
 }
 .main-editor-actions {
@@ -215,7 +221,7 @@
   gap: 1.3rem;
 }
 .main-editor-save-btn {
-  background: var(--color-primary);
+  background: #111;
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -224,11 +230,12 @@
   font-weight: 600;
   cursor: pointer;
   margin-left: 1em;
-  transition: background .19s;
-  box-shadow: 0 1px 4px rgba(25, 118, 210, 0.11);
+  transition: background .19s, color .19s;
+  box-shadow: none;
 }
 .main-editor-save-btn:hover, .main-editor-save-btn:focus {
-  background: #1350a1;
+  background: #444;
+  color: #fff;
 }
 .main-editor-updated {
   font-size: 0.98em;
@@ -238,9 +245,9 @@
 }
 
 .notes-footer {
-  background: var(--bg-header);
+  background: #fff;
   border-top: 1px solid var(--border-main);
-  color: #bbb;
+  color: #888;
   text-align: center;
   padding: 0.5em 0 0.3em 0;
   font-size: 1em;
